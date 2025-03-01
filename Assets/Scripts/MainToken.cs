@@ -23,12 +23,18 @@ public class MainToken : MonoBehaviour
                     spriteRenderer.sprite = faces[faceIndex];
                     GameControl.AddVisibleFace(faceIndex);
                     matched = GameControl.CheckMatch();
+                    if(matched == true)
+                    {
+                        GameObject [] previousCard = GameObject.FindGameObjectsWithTag(faceIndex.ToString());
+                        previousCard[0].GetComponent<MainToken>().matched = true;
+                        previousCard[1].GetComponent<MainToken>().matched = true;
+                    }
                 }
             }
             else 
             {
                 spriteRenderer.sprite = back;
-                GameControl.RemoveVisibleFace(faceIndex);
+                GameControl.RemoveVisibleFace(faceIndex);                
             }
         }
     }
@@ -36,6 +42,5 @@ public class MainToken : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
     }
 }
