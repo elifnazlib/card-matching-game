@@ -5,8 +5,6 @@ using UnityEngine;
 public class GameControl : MonoBehaviour
 {
     SpriteRenderer token;
-    // List <int> faceIndexes = new List<int> {0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7};
-
     public static System.Random rnd = new System.Random();
     public int shuffleNum = 0;
     public static int [] visibleFaces = {-1, -2};
@@ -28,6 +26,10 @@ public class GameControl : MonoBehaviour
             cardsUp = true;
         }
         return cardsUp;
+    }
+
+    public static (int index0, int index1) GetVisibleFaceIndexes() {
+        return (visibleFaces[0], visibleFaces[1]);
     }
 
     public static void AddVisibleFace(int index) 
