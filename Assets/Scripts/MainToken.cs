@@ -6,6 +6,8 @@ using UnityEngine;
 public class MainToken : MonoBehaviour
 {
     // GameControl gameControl;
+    private Score score;
+    private Timer timer;
     public static List <int> faceIndexes = new List<int> {0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7};
     SpriteRenderer spriteRenderer;
     public Sprite [] faces;
@@ -17,7 +19,7 @@ public class MainToken : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if(matched == false && active == true) 
+        if(matched == false && active == true && timer.IsTimerEnded() == false) 
         {        
             if(spriteRenderer.sprite == back)
             {
@@ -28,6 +30,7 @@ public class MainToken : MonoBehaviour
                     matched = GameControl.CheckMatch();
                     if(matched == true)
                     {
+                        score.UpdateScore();
                         GameObject [] previousCard = GameObject.FindGameObjectsWithTag(faceIndex.ToString());
                         previousCard[0].GetComponent<MainToken>().matched = true;
                         previousCard[1].GetComponent<MainToken>().matched = true;
@@ -72,7 +75,7 @@ public class MainToken : MonoBehaviour
 
     private IEnumerator WaitBeforeCardsGoBack() 
     {
-        Thread.Sleep(1000);
+        // Thread.Sleep(1000);
         active = false;
         yield return new WaitForSeconds(1);
         SecondMethod();
@@ -81,5 +84,11 @@ public class MainToken : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void Start()
+    {
+        score = (Score)FindFirstObjectByType(typeof(Score)); // Finding the Score instance (for better performance)
+        timer = (Timer)FindFirstObjectByType(typeof(Timer));
     }
 }
