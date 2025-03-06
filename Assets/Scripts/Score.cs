@@ -7,7 +7,7 @@ public class Score : MonoBehaviour
 {
     [SerializeField] private int score = 0; // Total score of the player
     [SerializeField] private TextMeshProUGUI scoreText; // TextMeshProUGUI instance to show the score on the screen
-    
+
     public void UpdateScore()
     {
         score += 10;

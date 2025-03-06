@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainToken : MonoBehaviour
 {
     // GameControl gameControl;
     private Score score;
+    private MultiplayerScore multiplayerScore;
     private Timer timer;
+    private ChangePlayer _playerScript;
     public static List <int> faceIndexes = new List<int> {0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7};
     SpriteRenderer spriteRenderer;
     public Sprite [] faces;
@@ -15,33 +18,55 @@ public class MainToken : MonoBehaviour
     public int faceIndex;
     public bool matched = false;
     public static bool active = true;
+    Scene scene;
+    public bool isMultiplayer;
 
 
     public void OnMouseDown()
-    {
-        if(matched == false && active == true && timer.IsTimerEnded() == false) 
-        {        
-            if(spriteRenderer.sprite == back)
-            {
-                if(GameControl.TwoCardsUp() == false) 
+    {   
+        if(isMultiplayer == true)
+        {
+            if(matched == false && active == true) 
+            {        
+                if(spriteRenderer.sprite == back)
                 {
-                    spriteRenderer.sprite = faces[faceIndex];
-                    GameControl.AddVisibleFace(faceIndex);
-                    matched = GameControl.CheckMatch();
-                    if(matched == true)
+                    if(GameControl.TwoCardsUp() == false) 
                     {
-                        score.UpdateScore();
-                        GameObject [] previousCard = GameObject.FindGameObjectsWithTag(faceIndex.ToString());
-                        previousCard[0].GetComponent<MainToken>().matched = true;
-                        previousCard[1].GetComponent<MainToken>().matched = true;
+                        spriteRenderer.sprite = faces[faceIndex];
+                        GameControl.AddVisibleFace(faceIndex);
+                        matched = GameControl.CheckMatch();
+                        if(matched == true)
+                        {
+                            multiplayerScore.UpdateScore();
+                            GameObject [] previousCard = GameObject.FindGameObjectsWithTag(faceIndex.ToString());
+                            previousCard[0].GetComponent<MainToken>().matched = true;
+                            previousCard[1].GetComponent<MainToken>().matched = true;
+                        }
                     }
                 }
             }
-            // else 
-            // {
-            //     spriteRenderer.sprite = back;
-            //     GameControl.RemoveVisibleFace(faceIndex);                
-            // }
+        }
+        else if (isMultiplayer == false)
+        {
+            if(matched == false && active == true && timer.IsTimerEnded() == false)
+            {
+                if(spriteRenderer.sprite == back)
+                {
+                    if(GameControl.TwoCardsUp() == false) 
+                    {
+                        spriteRenderer.sprite = faces[faceIndex];
+                        GameControl.AddVisibleFace(faceIndex);
+                        matched = GameControl.CheckMatch();
+                        if(matched == true)
+                        {
+                            score.UpdateScore();
+                            GameObject [] previousCard = GameObject.FindGameObjectsWithTag(faceIndex.ToString());
+                            previousCard[0].GetComponent<MainToken>().matched = true;
+                            previousCard[1].GetComponent<MainToken>().matched = true;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -49,6 +74,10 @@ public class MainToken : MonoBehaviour
         if (GameControl.TwoCardsUp() == true && matched == false)
         {
             StartCoroutine(WaitBeforeCardsGoBack());
+            // if(isMultiplayer == true)
+            // {
+            //     _playerScript.ChangeCurrentPlayer();
+            // }
         }
     }
 
@@ -70,6 +99,11 @@ public class MainToken : MonoBehaviour
             GameControl.RemoveVisibleFace(index1);
             Debug.Log("last");
             active = true;
+
+            if(isMultiplayer == true)
+            {
+                _playerScript.ChangeCurrentPlayer();
+            }
         }
     }
 
@@ -88,7 +122,23 @@ public class MainToken : MonoBehaviour
 
     void Start()
     {
-        score = (Score)FindFirstObjectByType(typeof(Score)); // Finding the Score instance (for better performance)
-        timer = (Timer)FindFirstObjectByType(typeof(Timer));
+        scene = SceneManager.GetActiveScene();
+
+        if(scene.name == "Multiplayer")
+        {
+            isMultiplayer = true;
+            multiplayerScore = (MultiplayerScore)FindFirstObjectByType(typeof(MultiplayerScore));
+            _playerScript = (ChangePlayer)FindFirstObjectByType(typeof(ChangePlayer));
+        }
+        else
+        {
+            isMultiplayer = false;
+            score = (Score)FindFirstObjectByType(typeof(Score)); // Finding the Score instance (for better performance)
+            timer = (Timer)FindFirstObjectByType(typeof(Timer));
+        }
+        
+        
+        
+        
     }
 }
