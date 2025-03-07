@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class ChangePlayer : MonoBehaviour
@@ -14,6 +11,7 @@ public class ChangePlayer : MonoBehaviour
     {
         turn = "left";
     }
+    
     public string GetCurrentPlayer()
     {
         return turn;

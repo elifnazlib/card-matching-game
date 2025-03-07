@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,6 +14,21 @@ public class GameOver : MonoBehaviour
     private MainToken _mainTokenScript;
     private Timer _timerScript;
     private Score _scoreScript;
+
+    void Start()
+    {
+        _mainTokenScript = (MainToken)FindFirstObjectByType(typeof(MainToken));
+        
+        if(_mainTokenScript.isMultiplayer == false)
+        {
+            _timerScript = (Timer)FindFirstObjectByType(typeof(Timer));
+            _scoreScript = (Score)FindFirstObjectByType(typeof(Score));
+        }
+        else
+        {
+            _multiplayerScoreScript = (MultiplayerScore)FindFirstObjectByType(typeof(MultiplayerScore));
+        }
+    }
 
     public void ActivateGameOverPanel()
     {
@@ -65,36 +79,9 @@ public class GameOver : MonoBehaviour
             {
                 scoreText.text = "You Couldn't Finish On Time!"; 
             }
-            
-
-            /*
-            TODO: Skor sistemini güncelleyebilirsin
-            - Chill mode'da zaman count up şeklinde olacak, belli bir skor yok.
-            - Easy, Medium, Hard mode'larda hem skor hem zaman var;
-            bunu sadece zamana karşı oynanacak şekilde güncelleyebilirsin.
-            Veya zamanında bitiremezsen fail yazısı gelir, zaman dolmadan 
-            bitirirsen kalan zamana göre skoruna add up yapılabilir.
-            Timer script'inden kalan zamanı çekmen ve zamanın kalıp 
-            kalmadığını kontrol etmen gerek.
-            */
 
         }
         
-    }
-
-    void Start()
-    {
-        _mainTokenScript = (MainToken)FindFirstObjectByType(typeof(MainToken));
-        
-        if(_mainTokenScript.isMultiplayer == false)
-        {
-            _timerScript = (Timer)FindFirstObjectByType(typeof(Timer));
-            _scoreScript = (Score)FindFirstObjectByType(typeof(Score));
-        }
-        else
-        {
-            _multiplayerScoreScript = (MultiplayerScore)FindFirstObjectByType(typeof(MultiplayerScore));
-        }
     }
 
 }

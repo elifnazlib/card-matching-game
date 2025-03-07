@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +20,32 @@ public class MainToken : MonoBehaviour
     Scene scene;
     public bool isMultiplayer;
     public static int cardCount;
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void Start()
+    {
+        cardCount = 0;
+        scene = SceneManager.GetActiveScene();
+
+        if(scene.name == "Multiplayer")
+        {
+            isMultiplayer = true;
+            multiplayerScore = (MultiplayerScore)FindFirstObjectByType(typeof(MultiplayerScore));
+            _playerScript = (ChangePlayer)FindFirstObjectByType(typeof(ChangePlayer));
+        }
+        else
+        {
+            isMultiplayer = false;
+            score = (Score)FindFirstObjectByType(typeof(Score)); // Finding the Score instance (for better performance)
+            timer = (Timer)FindFirstObjectByType(typeof(Timer));
+        }
+        
+        _gameOverScript = (GameOver)FindFirstObjectByType(typeof(GameOver));
+    }
 
     public void OnMouseDown()
     {   
@@ -94,6 +119,12 @@ public class MainToken : MonoBehaviour
         }
     }
 
+    private IEnumerator WaitBeforeCardsGoBack() 
+    {
+        active = false;
+        yield return new WaitForSeconds(1);
+        SecondMethod();
+    }
 
     private void SecondMethod()
     {
@@ -120,39 +151,4 @@ public class MainToken : MonoBehaviour
         }
     }
 
-    private IEnumerator WaitBeforeCardsGoBack() 
-    {
-        // Thread.Sleep(1000);
-        active = false;
-        yield return new WaitForSeconds(1);
-        SecondMethod();
-    }
-
-    private void Awake()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    void Start()
-    {
-        cardCount = 0;
-        scene = SceneManager.GetActiveScene();
-
-        if(scene.name == "Multiplayer")
-        {
-            isMultiplayer = true;
-            multiplayerScore = (MultiplayerScore)FindFirstObjectByType(typeof(MultiplayerScore));
-            _playerScript = (ChangePlayer)FindFirstObjectByType(typeof(ChangePlayer));
-        }
-        else
-        {
-            isMultiplayer = false;
-            score = (Score)FindFirstObjectByType(typeof(Score)); // Finding the Score instance (for better performance)
-            timer = (Timer)FindFirstObjectByType(typeof(Timer));
-        }
-        
-        _gameOverScript = (GameOver)FindFirstObjectByType(typeof(GameOver));
-        
-        
-    }
 }

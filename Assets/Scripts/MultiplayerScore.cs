@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class MultiplayerScore : MonoBehaviour
 {

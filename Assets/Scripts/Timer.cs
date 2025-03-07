@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -14,6 +12,12 @@ public class Timer : MonoBehaviour
     public bool isGameEndedBeforeTimer = false;
     private GameOver _gameOverScript;
     string sceneName;
+
+    void Start()
+    {
+        _gameOverScript = (GameOver)FindFirstObjectByType(typeof(GameOver));
+        sceneName = SceneManager.GetActiveScene().name;
+    }
     
     void Update()
     {   
@@ -51,10 +55,6 @@ public class Timer : MonoBehaviour
         isGameEndedBeforeTimer = state;
     }
 
-    void Start()
-    {
-        _gameOverScript = (GameOver)FindFirstObjectByType(typeof(GameOver));
-        sceneName = SceneManager.GetActiveScene().name;
-    }
+    
 
 }
