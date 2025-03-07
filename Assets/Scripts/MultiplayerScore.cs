@@ -27,4 +27,11 @@ public class MultiplayerScore : MonoBehaviour
             rightScoreText.text = rightScore.ToString();
         }
     }
+
+    public string GetWinner()
+    {
+        if (leftScore > rightScore) return "left";
+        else if (leftScore < rightScore) return "right";
+        else return "draw";
+    }
 }

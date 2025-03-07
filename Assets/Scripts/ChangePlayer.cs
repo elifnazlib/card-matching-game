@@ -13,8 +13,6 @@ public class ChangePlayer : MonoBehaviour
     void Start()
     {
         turn = "left";
-        leftPanel.GetComponent<UnityEngine.UI.Image>();
-        rightPanel.GetComponent<UnityEngine.UI.Image>();
     }
     public string GetCurrentPlayer()
     {
@@ -32,11 +30,10 @@ public class ChangePlayer : MonoBehaviour
             
             tempColorLeft.a = 0.2f;
             leftPanel.color = tempColorLeft;
-
             
             tempColorRight.a = 0.5f;
             rightPanel.color = tempColorRight;
-
+            
             turn = "right";
         } 
         else if(GetCurrentPlayer() == "right") 

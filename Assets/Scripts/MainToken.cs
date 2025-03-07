@@ -6,11 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class MainToken : MonoBehaviour
 {
-    // GameControl gameControl;
+    /* TODO: Multiplayer'da kartların hepsi açıldığında oyun bitecek.
+    Skor karşılaştırmasına göre pop up panel çıkabilir.
+    Her matched olduğunda bool cardCount +=2 yapabilirsin.
+    cardCount = 16 olduğunda oyun bitsin.    
+    */
+    
     private Score score;
     private MultiplayerScore multiplayerScore;
     private Timer timer;
     private ChangePlayer _playerScript;
+    private GameOver _gameOverScript;
     public static List <int> faceIndexes = new List<int> {0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7};
     SpriteRenderer spriteRenderer;
     public Sprite [] faces;
@@ -20,7 +26,7 @@ public class MainToken : MonoBehaviour
     public static bool active = true;
     Scene scene;
     public bool isMultiplayer;
-
+    public static int cardCount;
 
     public void OnMouseDown()
     {   
@@ -37,10 +43,16 @@ public class MainToken : MonoBehaviour
                         matched = GameControl.CheckMatch();
                         if(matched == true)
                         {
+                            cardCount +=2;
                             multiplayerScore.UpdateScore();
                             GameObject [] previousCard = GameObject.FindGameObjectsWithTag(faceIndex.ToString());
                             previousCard[0].GetComponent<MainToken>().matched = true;
                             previousCard[1].GetComponent<MainToken>().matched = true;
+
+                            if(cardCount == 16)
+                            {
+                                _gameOverScript.ActivateGameOverPanel();
+                            }
                         }
                     }
                 }
@@ -74,10 +86,6 @@ public class MainToken : MonoBehaviour
         if (GameControl.TwoCardsUp() == true && matched == false)
         {
             StartCoroutine(WaitBeforeCardsGoBack());
-            // if(isMultiplayer == true)
-            // {
-            //     _playerScript.ChangeCurrentPlayer();
-            // }
         }
     }
 
@@ -122,6 +130,7 @@ public class MainToken : MonoBehaviour
 
     void Start()
     {
+        cardCount = 0;
         scene = SceneManager.GetActiveScene();
 
         if(scene.name == "Multiplayer")
@@ -137,7 +146,7 @@ public class MainToken : MonoBehaviour
             timer = (Timer)FindFirstObjectByType(typeof(Timer));
         }
         
-        
+        _gameOverScript = (GameOver)FindFirstObjectByType(typeof(GameOver));
         
         
     }
