@@ -13,4 +13,9 @@ public class Score : MonoBehaviour
         score += 10;
         scoreText.text = score.ToString(); // Updating the score text on the screen
     }
+
+    public int GetScore()
+    {
+        return score;
+    }
 }

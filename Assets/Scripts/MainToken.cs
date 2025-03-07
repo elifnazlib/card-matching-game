@@ -5,13 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainToken : MonoBehaviour
-{
-    /* TODO: Multiplayer'da kartların hepsi açıldığında oyun bitecek.
-    Skor karşılaştırmasına göre pop up panel çıkabilir.
-    Her matched olduğunda bool cardCount +=2 yapabilirsin.
-    cardCount = 16 olduğunda oyun bitsin.    
-    */
-    
+{    
     private Score score;
     private MultiplayerScore multiplayerScore;
     private Timer timer;
@@ -71,10 +65,21 @@ public class MainToken : MonoBehaviour
                         matched = GameControl.CheckMatch();
                         if(matched == true)
                         {
-                            score.UpdateScore();
+                            cardCount +=2;
+                            if (SceneManager.GetActiveScene().name != "ChillMode")
+                            {
+                                score.UpdateScore();
+                            }
+                            
                             GameObject [] previousCard = GameObject.FindGameObjectsWithTag(faceIndex.ToString());
                             previousCard[0].GetComponent<MainToken>().matched = true;
                             previousCard[1].GetComponent<MainToken>().matched = true;
+
+                            if(cardCount == 16)
+                            {
+                                timer.ChangeState(true);
+                                _gameOverScript.ActivateGameOverPanel();
+                            }
                         }
                     }
                 }

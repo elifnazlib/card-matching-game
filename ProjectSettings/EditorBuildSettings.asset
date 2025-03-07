@@ -13,13 +13,13 @@ EditorBuildSettings:
     guid: e63e78f63ecf92f408706dc4449a2535
   - enabled: 1
     path: Assets/Scenes/EasyMode.unity
-    guid: 68c1839168bffca479fd2998b9b4413f
+    guid: 7d778b398e573ee41aca13a41e7219af
   - enabled: 1
     path: Assets/Scenes/MediumMode.unity
-    guid: 0e6256290902505488d1080db33494c3
+    guid: 51f2415ef53ba9049ad75e29e1d54a0f
   - enabled: 1
     path: Assets/Scenes/HardMode.unity
-    guid: ba44532607e664c42a21aa0a2df54ac6
+    guid: 32b0301769d8c724d844dedbccd12513
   - enabled: 1
     path: Assets/Scenes/Multiplayer.unity
     guid: b3badabfb67937e4a9af9581f6fddeda

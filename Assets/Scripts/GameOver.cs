@@ -13,6 +13,8 @@ public class GameOver : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     private MultiplayerScore _multiplayerScoreScript;
     private MainToken _mainTokenScript;
+    private Timer _timerScript;
+    private Score _scoreScript;
 
     public void ActivateGameOverPanel()
     {
@@ -50,8 +52,32 @@ public class GameOver : MonoBehaviour
         }
         else
         {
-            Debug.Log("I'm in single player mode");
-            // code here
+            if(SceneManager.GetActiveScene().name == "ChillMode")
+            {
+                scoreText.text = "You Finished in " + _timerScript.GetRemainingTime().ToString() + " Seconds";
+            }
+            else if(_timerScript.IsTimerEnded() == false)
+            {
+                scoreText.text = "Your Score with Remaining Time Added is " 
+                                + (_scoreScript.GetScore() + _timerScript.GetRemainingTime()).ToString();
+            }
+            else
+            {
+                scoreText.text = "You Couldn't Finish On Time!"; 
+            }
+            
+
+            /*
+            TODO: Skor sistemini güncelleyebilirsin
+            - Chill mode'da zaman count up şeklinde olacak, belli bir skor yok.
+            - Easy, Medium, Hard mode'larda hem skor hem zaman var;
+            bunu sadece zamana karşı oynanacak şekilde güncelleyebilirsin.
+            Veya zamanında bitiremezsen fail yazısı gelir, zaman dolmadan 
+            bitirirsen kalan zamana göre skoruna add up yapılabilir.
+            Timer script'inden kalan zamanı çekmen ve zamanın kalıp 
+            kalmadığını kontrol etmen gerek.
+            */
+
         }
         
     }
@@ -59,7 +85,16 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         _mainTokenScript = (MainToken)FindFirstObjectByType(typeof(MainToken));
-        _multiplayerScoreScript = (MultiplayerScore)FindFirstObjectByType(typeof(MultiplayerScore));
+        
+        if(_mainTokenScript.isMultiplayer == false)
+        {
+            _timerScript = (Timer)FindFirstObjectByType(typeof(Timer));
+            _scoreScript = (Score)FindFirstObjectByType(typeof(Score));
+        }
+        else
+        {
+            _multiplayerScoreScript = (MultiplayerScore)FindFirstObjectByType(typeof(MultiplayerScore));
+        }
     }
 
 }
