@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour
 {
-    [SerializeField] Button button;
     [SerializeField] GameObject mainMenuPanel;
     [SerializeField] GameObject singlePlayerMenuPanel;
     [SerializeField] GameObject playAgainstTimeMenuPanel;
@@ -31,6 +30,12 @@ public class ButtonController : MonoBehaviour
         singlePlayerMenuPanel.SetActive(false);
     }
 
+    public void GoBackToMainMenu() {
+        mainMenuPanel.SetActive(true);
+        playAgainstTimeMenuPanel.SetActive(false);
+        singlePlayerMenuPanel.SetActive(false);
+    }
+
     public void EasyModeClicked() {
         SceneManager.LoadSceneAsync("EasyMode", LoadSceneMode.Single);
     }
@@ -41,6 +46,12 @@ public class ButtonController : MonoBehaviour
 
     public void HardModeClicked() {
         SceneManager.LoadSceneAsync("HardMode", LoadSceneMode.Single);
+    }
+
+    public void GoBackToSinglePlayerMenu() {
+        mainMenuPanel.SetActive(false);
+        playAgainstTimeMenuPanel.SetActive(false);
+        singlePlayerMenuPanel.SetActive(true);
     }
 
 }
