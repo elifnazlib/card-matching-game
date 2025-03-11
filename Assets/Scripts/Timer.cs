@@ -24,7 +24,8 @@ public class Timer : MonoBehaviour
         if(sceneName == "ChillMode" &&  isGameEndedBeforeTimer == false)
         {
             targetTime += Time.deltaTime; 
-            timerText.text = TimeSpan.FromSeconds(targetTime).ToString(@"ss");
+            // timerText.text = TimeSpan.FromSeconds(targetTime).ToString(@"ss");
+            timerText.text = ((int) targetTime).ToString();
         }
         else if (!isTimerEnded && isGameEndedBeforeTimer == false) // If the timer is not ended
         {
