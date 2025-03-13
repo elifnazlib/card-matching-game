@@ -152,3 +152,7 @@ public class MainToken : MonoBehaviour
     }
 
 }
+
+// TODO: Modlara göre müzik ekle. Zaman azaldıkça müzik hızlanır
+// TODO: Tıklama sesi.
+// TODO: Eşleştirme efekti (particle system)
