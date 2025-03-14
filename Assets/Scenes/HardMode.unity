@@ -241,6 +241,9 @@ MonoBehaviour:
   faceIndex: 2
   matched: 0
   isMultiplayer: 0
+  audioSource: {fileID: 699826698}
+  successSound: {fileID: 8300000, guid: 35ce2b03ee20a544abc6425bde5b6da0, type: 3}
+  failSound: {fileID: 8300000, guid: e46a6c7f4daa799478b1b394ec731fb0, type: 3}
 --- !u!212 &20277721
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -411,6 +414,9 @@ MonoBehaviour:
   faceIndex: 2
   matched: 0
   isMultiplayer: 0
+  audioSource: {fileID: 699826698}
+  successSound: {fileID: 8300000, guid: 35ce2b03ee20a544abc6425bde5b6da0, type: 3}
+  failSound: {fileID: 8300000, guid: e46a6c7f4daa799478b1b394ec731fb0, type: 3}
 --- !u!212 &185453743
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -783,6 +789,9 @@ MonoBehaviour:
   faceIndex: 2
   matched: 0
   isMultiplayer: 0
+  audioSource: {fileID: 699826698}
+  successSound: {fileID: 8300000, guid: 35ce2b03ee20a544abc6425bde5b6da0, type: 3}
+  failSound: {fileID: 8300000, guid: e46a6c7f4daa799478b1b394ec731fb0, type: 3}
 --- !u!212 &331727584
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1221,6 +1230,9 @@ MonoBehaviour:
   faceIndex: 2
   matched: 0
   isMultiplayer: 0
+  audioSource: {fileID: 699826698}
+  successSound: {fileID: 8300000, guid: 35ce2b03ee20a544abc6425bde5b6da0, type: 3}
+  failSound: {fileID: 8300000, guid: e46a6c7f4daa799478b1b394ec731fb0, type: 3}
 --- !u!212 &415220105
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1391,6 +1403,9 @@ MonoBehaviour:
   faceIndex: 2
   matched: 0
   isMultiplayer: 0
+  audioSource: {fileID: 699826698}
+  successSound: {fileID: 8300000, guid: 35ce2b03ee20a544abc6425bde5b6da0, type: 3}
+  failSound: {fileID: 8300000, guid: e46a6c7f4daa799478b1b394ec731fb0, type: 3}
 --- !u!212 &473660720
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1621,6 +1636,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1012748162}
         m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
         m_MethodName: MainMenuButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1955895570}
+        m_TargetAssemblyTypeName: SoundEffects, Assembly-CSharp
+        m_MethodName: ButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1920,6 +1947,9 @@ MonoBehaviour:
   faceIndex: 2
   matched: 0
   isMultiplayer: 0
+  audioSource: {fileID: 699826698}
+  successSound: {fileID: 8300000, guid: 35ce2b03ee20a544abc6425bde5b6da0, type: 3}
+  failSound: {fileID: 8300000, guid: e46a6c7f4daa799478b1b394ec731fb0, type: 3}
 --- !u!212 &594492482
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2106,6 +2136,134 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611524254}
   m_CullTransparentMesh: 1
+--- !u!1 &699826697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 699826699}
+  - component: {fileID: 699826698}
+  m_Layer: 0
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &699826698
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699826697}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &699826699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699826697}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.30580336, y: 1.3229046, z: -2.571147}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &747880316
 GameObject:
   m_ObjectHideFlags: 0
@@ -2378,6 +2536,9 @@ MonoBehaviour:
   faceIndex: 2
   matched: 0
   isMultiplayer: 0
+  audioSource: {fileID: 699826698}
+  successSound: {fileID: 8300000, guid: 35ce2b03ee20a544abc6425bde5b6da0, type: 3}
+  failSound: {fileID: 8300000, guid: e46a6c7f4daa799478b1b394ec731fb0, type: 3}
 --- !u!212 &853282687
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2463,6 +2624,9 @@ MonoBehaviour:
   mainMenuButton: {fileID: 529042113}
   gameOverPanel: {fileID: 1364620555}
   scoreText: {fileID: 278432087}
+  audioSource: {fileID: 699826698}
+  winSound: {fileID: 8300000, guid: aa3d046d10ac51949bb409cbb6b2a47e, type: 3}
+  loseSound: {fileID: 8300000, guid: 03b6799acd2df104281c71161be65b37, type: 3}
 --- !u!4 &1012748163
 Transform:
   m_ObjectHideFlags: 0
@@ -2596,6 +2760,9 @@ MonoBehaviour:
   faceIndex: 2
   matched: 0
   isMultiplayer: 0
+  audioSource: {fileID: 699826698}
+  successSound: {fileID: 8300000, guid: 35ce2b03ee20a544abc6425bde5b6da0, type: 3}
+  failSound: {fileID: 8300000, guid: e46a6c7f4daa799478b1b394ec731fb0, type: 3}
 --- !u!212 &1052009729
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3262,7 +3429,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.47058824}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -3287,6 +3454,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1012748162}
         m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
         m_MethodName: RestartButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1955895570}
+        m_TargetAssemblyTypeName: SoundEffects, Assembly-CSharp
+        m_MethodName: ButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3531,6 +3710,9 @@ MonoBehaviour:
   faceIndex: 2
   matched: 0
   isMultiplayer: 0
+  audioSource: {fileID: 699826698}
+  successSound: {fileID: 8300000, guid: 35ce2b03ee20a544abc6425bde5b6da0, type: 3}
+  failSound: {fileID: 8300000, guid: e46a6c7f4daa799478b1b394ec731fb0, type: 3}
 --- !u!212 &1468646242
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3701,6 +3883,9 @@ MonoBehaviour:
   faceIndex: 2
   matched: 0
   isMultiplayer: 0
+  audioSource: {fileID: 699826698}
+  successSound: {fileID: 8300000, guid: 35ce2b03ee20a544abc6425bde5b6da0, type: 3}
+  failSound: {fileID: 8300000, guid: e46a6c7f4daa799478b1b394ec731fb0, type: 3}
 --- !u!212 &1502539886
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3813,7 +3998,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.47058824}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -3838,6 +4023,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1012748162}
         m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
         m_MethodName: MainMenuButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1955895570}
+        m_TargetAssemblyTypeName: SoundEffects, Assembly-CSharp
+        m_MethodName: ButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4050,6 +4247,9 @@ MonoBehaviour:
   faceIndex: 2
   matched: 0
   isMultiplayer: 0
+  audioSource: {fileID: 699826698}
+  successSound: {fileID: 8300000, guid: 35ce2b03ee20a544abc6425bde5b6da0, type: 3}
+  failSound: {fileID: 8300000, guid: e46a6c7f4daa799478b1b394ec731fb0, type: 3}
 --- !u!212 &1571661565
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4220,6 +4420,9 @@ MonoBehaviour:
   faceIndex: 2
   matched: 0
   isMultiplayer: 0
+  audioSource: {fileID: 699826698}
+  successSound: {fileID: 8300000, guid: 35ce2b03ee20a544abc6425bde5b6da0, type: 3}
+  failSound: {fileID: 8300000, guid: e46a6c7f4daa799478b1b394ec731fb0, type: 3}
 --- !u!212 &1684026014
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4358,6 +4561,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1012748162}
         m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
         m_MethodName: RestartButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1955895570}
+        m_TargetAssemblyTypeName: SoundEffects, Assembly-CSharp
+        m_MethodName: ButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4523,6 +4738,9 @@ MonoBehaviour:
   faceIndex: 2
   matched: 0
   isMultiplayer: 0
+  audioSource: {fileID: 699826698}
+  successSound: {fileID: 8300000, guid: 35ce2b03ee20a544abc6425bde5b6da0, type: 3}
+  failSound: {fileID: 8300000, guid: e46a6c7f4daa799478b1b394ec731fb0, type: 3}
 --- !u!212 &1848700040
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4575,6 +4793,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1955895569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1955895571}
+  - component: {fileID: 1955895570}
+  m_Layer: 0
+  m_Name: SFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1955895570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955895569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f80515f354fcc82409f7a82afe5af9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  src: {fileID: 699826698}
+  buttonClickSound: {fileID: 8300000, guid: 29329063e9e807f4a9984dc5566dd2d9, type: 3}
+--- !u!4 &1955895571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955895569}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.30580336, y: 1.3229046, z: -2.571147}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1984440356
 GameObject:
   m_ObjectHideFlags: 0
@@ -4693,6 +4957,9 @@ MonoBehaviour:
   faceIndex: 2
   matched: 0
   isMultiplayer: 0
+  audioSource: {fileID: 699826698}
+  successSound: {fileID: 8300000, guid: 35ce2b03ee20a544abc6425bde5b6da0, type: 3}
+  failSound: {fileID: 8300000, guid: e46a6c7f4daa799478b1b394ec731fb0, type: 3}
 --- !u!212 &1984440361
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4863,6 +5130,9 @@ MonoBehaviour:
   faceIndex: 2
   matched: 0
   isMultiplayer: 0
+  audioSource: {fileID: 699826698}
+  successSound: {fileID: 8300000, guid: 35ce2b03ee20a544abc6425bde5b6da0, type: 3}
+  failSound: {fileID: 8300000, guid: e46a6c7f4daa799478b1b394ec731fb0, type: 3}
 --- !u!212 &2041216130
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5033,6 +5303,9 @@ MonoBehaviour:
   faceIndex: 2
   matched: 0
   isMultiplayer: 0
+  audioSource: {fileID: 699826698}
+  successSound: {fileID: 8300000, guid: 35ce2b03ee20a544abc6425bde5b6da0, type: 3}
+  failSound: {fileID: 8300000, guid: e46a6c7f4daa799478b1b394ec731fb0, type: 3}
 --- !u!212 &2061954714
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5140,6 +5413,8 @@ SceneRoots:
   - {fileID: 1195073519}
   - {fileID: 1532122172}
   - {fileID: 1012748163}
+  - {fileID: 1955895571}
+  - {fileID: 699826699}
   - {fileID: 1276911129}
   - {fileID: 2063518615}
   - {fileID: 240299501}

@@ -15,6 +15,10 @@ public class GameOver : MonoBehaviour
     private Timer _timerScript;
     private Score _scoreScript;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip winSound;
+    [SerializeField] private AudioClip loseSound;
+
     void Start()
     {
         _mainTokenScript = (MainToken)FindFirstObjectByType(typeof(MainToken));
@@ -60,6 +64,7 @@ public class GameOver : MonoBehaviour
     {
         if(_mainTokenScript.isMultiplayer == true)
         {
+            audioSource.PlayOneShot(winSound);
             if (_multiplayerScoreScript.GetWinner() == "left") scoreText.text = "Left Player Won!";
             else if (_multiplayerScoreScript.GetWinner() == "right") scoreText.text = "Right Player Won!";
             else scoreText.text = "Draw!";
@@ -68,18 +73,20 @@ public class GameOver : MonoBehaviour
         {
             if(SceneManager.GetActiveScene().name == "ChillMode")
             {
+                audioSource.PlayOneShot(winSound);
                 scoreText.text = "You Finished in " + _timerScript.GetRemainingTime().ToString() + " Seconds";
             }
             else if(_timerScript.IsTimerEnded() == false)
             {
+                audioSource.PlayOneShot(winSound);
                 scoreText.text = "Your Score with Remaining Time Added is " 
                                 + (_scoreScript.GetScore() + _timerScript.GetRemainingTime()).ToString();
             }
             else
             {
-                scoreText.text = "You Couldn't Finish On Time!"; 
+                audioSource.PlayOneShot(loseSound);
+                scoreText.text = "You Couldn't Finish On Time!";
             }
-
         }
         
     }

@@ -12,6 +12,7 @@ public class Timer : MonoBehaviour
     public bool isGameEndedBeforeTimer = false;
     private GameOver _gameOverScript;
     string sceneName;
+    private int count = 0;
 
     void Start()
     {
@@ -37,7 +38,12 @@ public class Timer : MonoBehaviour
         if (sceneName != "ChillMode" && targetTime <= 0.0f) // If the target time is less than or equal to 0
         {
             isTimerEnded = true; // Set the timer as ended
-            _gameOverScript.ActivateGameOverPanel();
+            if(count == 0)
+            {
+                count = 1;
+                _gameOverScript.ActivateGameOverPanel();
+            }
+            
         }
     }
 

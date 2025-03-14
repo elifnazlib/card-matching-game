@@ -21,6 +21,10 @@ public class MainToken : MonoBehaviour
     public bool isMultiplayer;
     public static int cardCount;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip successSound;
+    [SerializeField] private AudioClip failSound;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -72,6 +76,10 @@ public class MainToken : MonoBehaviour
                             {
                                 _gameOverScript.ActivateGameOverPanel();
                             }
+                            else
+                            {
+                                audioSource.PlayOneShot(successSound, 0.5f);
+                            }
                         }
                     }
                 }
@@ -105,6 +113,10 @@ public class MainToken : MonoBehaviour
                                 timer.ChangeState(true);
                                 _gameOverScript.ActivateGameOverPanel();
                             }
+                            else
+                            {
+                                audioSource.PlayOneShot(successSound, 0.5f);
+                            }
                         }
                     }
                 }
@@ -122,6 +134,7 @@ public class MainToken : MonoBehaviour
     private IEnumerator WaitBeforeCardsGoBack() 
     {
         active = false;
+        audioSource.PlayOneShot(failSound, 0.5f);
         yield return new WaitForSeconds(1);
         SecondMethod();
     }
