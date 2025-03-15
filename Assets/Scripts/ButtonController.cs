@@ -6,7 +6,7 @@ public class ButtonController : MonoBehaviour
     [SerializeField] GameObject mainMenuPanel;
     [SerializeField] GameObject singlePlayerMenuPanel;
     [SerializeField] GameObject playAgainstTimeMenuPanel;
-
+    
     public void SinglePlayerModeClicked() {
         mainMenuPanel.SetActive(false);
         playAgainstTimeMenuPanel.SetActive(false);
@@ -15,10 +15,20 @@ public class ButtonController : MonoBehaviour
 
     public void MultiplayerModeClicked() {
         SceneManager.LoadSceneAsync("Multiplayer", LoadSceneMode.Single);
+        BGMusic bgMusic = FindObjectOfType<BGMusic>();
+        if (bgMusic != null)
+        {
+            bgMusic.ChangeMusic("Multiplayer");
+        }
     }
 
     public void ChillPlayClicked() {
         SceneManager.LoadSceneAsync("ChillMode", LoadSceneMode.Single);
+        BGMusic bgMusic = FindObjectOfType<BGMusic>();
+        if (bgMusic != null)
+        {
+            bgMusic.ChangeMusic("ChillMode");
+        }
     }
 
     public void PlayAgainstTimeModeClicked() {
@@ -35,14 +45,29 @@ public class ButtonController : MonoBehaviour
 
     public void EasyModeClicked() {
         SceneManager.LoadSceneAsync("EasyMode", LoadSceneMode.Single);
+        BGMusic bgMusic = FindObjectOfType<BGMusic>();
+        if (bgMusic != null)
+        {
+            bgMusic.ChangeMusic("EasyMode");
+        }
     }
 
     public void MediumModeClicked() {
         SceneManager.LoadSceneAsync("MediumMode", LoadSceneMode.Single);
+        BGMusic bgMusic = FindObjectOfType<BGMusic>();
+        if (bgMusic != null)
+        {
+            bgMusic.ChangeMusic("MediumMode");
+        }
     }
 
     public void HardModeClicked() {
         SceneManager.LoadSceneAsync("HardMode", LoadSceneMode.Single);
+        BGMusic bgMusic = FindObjectOfType<BGMusic>();
+        if (bgMusic != null)
+        {
+            bgMusic.ChangeMusic("HardMode");
+        }
     }
 
     public void GoBackToSinglePlayerMenu() {

@@ -58,6 +58,11 @@ public class GameOver : MonoBehaviour
     {
         ResetVariables();
         SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+        BGMusic bgMusic = FindObjectOfType<BGMusic>();
+        if (bgMusic != null)
+        {
+            bgMusic.ChangeMusic("MainMenu");
+        }
     }
 
     public void WinnerText()
