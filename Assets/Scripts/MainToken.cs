@@ -16,7 +16,7 @@ public class MainToken : MonoBehaviour
     public Sprite back;
     public int faceIndex;
     public bool matched = false;
-    public static bool active = true;
+    public bool active = true;
     Scene scene;
     public bool isMultiplayer;
     public static int cardCount;
@@ -88,7 +88,7 @@ public class MainToken : MonoBehaviour
         else if (isMultiplayer == false)
         {
             if(matched == false && active == true && timer.IsTimerEnded() == false)
-            {
+            {              
                 if(spriteRenderer.sprite == back)
                 {
                     if(GameControl.TwoCardsUp() == false) 
@@ -142,7 +142,7 @@ public class MainToken : MonoBehaviour
     private void SecondMethod()
     {
         Debug.Log("first");
-        if(GameControl.TwoCardsUp() == false); else {
+        // if(GameControl.TwoCardsUp() == false); else {
             int index0 = GameControl.GetVisibleFaceIndexes().index0, index1 = GameControl.GetVisibleFaceIndexes().index1;
             Debug.Log($"indexes are: {index0}, {index1}");
             GameObject [] firstCard = GameObject.FindGameObjectsWithTag(index0.ToString());
@@ -161,7 +161,7 @@ public class MainToken : MonoBehaviour
             {
                 _playerScript.ChangeCurrentPlayer();
             }
-        }
+        // }
     }
 
 }
