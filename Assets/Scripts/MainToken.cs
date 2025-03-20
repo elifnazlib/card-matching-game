@@ -16,7 +16,7 @@ public class MainToken : MonoBehaviour
     public Sprite back;
     public int faceIndex;
     public bool matched = false;
-    public bool active = true;
+    public static bool active = true;
     Scene scene;
     public bool isMultiplayer;
     public static int cardCount;
@@ -72,6 +72,9 @@ public class MainToken : MonoBehaviour
                             previousCard[0].GetComponent<MainToken>().matched = true;
                             previousCard[1].GetComponent<MainToken>().matched = true;
 
+                            previousCard[0].GetComponent<ParticleSystem>().Play();
+                            previousCard[1].GetComponent<ParticleSystem>().Play();
+
                             if(cardCount == 16)
                             {
                                 _gameOverScript.ActivateGameOverPanel();
@@ -108,6 +111,9 @@ public class MainToken : MonoBehaviour
                             previousCard[0].GetComponent<MainToken>().matched = true;
                             previousCard[1].GetComponent<MainToken>().matched = true;
 
+                            previousCard[0].GetComponent<ParticleSystem>().Play();
+                            previousCard[1].GetComponent<ParticleSystem>().Play();
+
                             if(cardCount == 16)
                             {
                                 timer.ChangeState(true);
@@ -125,7 +131,7 @@ public class MainToken : MonoBehaviour
     }
 
     private void OnMouseUpAsButton() {
-        if (GameControl.TwoCardsUp() == true && matched == false)
+        if (GameControl.TwoCardsUp() == true && matched == false && active == true)
         {
             StartCoroutine(WaitBeforeCardsGoBack());
         }
@@ -135,7 +141,7 @@ public class MainToken : MonoBehaviour
     {
         active = false;
         audioSource.PlayOneShot(failSound, 0.5f);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.7f);
         SecondMethod();
     }
 
@@ -165,7 +171,3 @@ public class MainToken : MonoBehaviour
     }
 
 }
-
-// TODO: Modlara göre müzik ekle. Zaman azaldıkça müzik hızlanır
-// TODO: Tıklama sesi.
-// TODO: Eşleştirme efekti (particle system)

@@ -45,6 +45,7 @@ public class GameOver : MonoBehaviour
         MainToken.faceIndexes = new List<int> {0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7};
         GameControl.visibleFaces[0] = -1;
         GameControl.visibleFaces[1] = -2;
+        MainToken.active = true;
     }
 
     public void RestartButtonClicked()
